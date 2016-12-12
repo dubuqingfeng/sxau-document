@@ -40,6 +40,7 @@
 \renewcommand\author[1]{\def\sxau@value@author{#1}}
 
 \setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}     % 目录深度 (part 对应 -1)
 
 \ctexset{contentsname={\sxau@contentsname}}
 
@@ -58,6 +59,16 @@
     \fancyhead[EC]{\centering\xiaowuhao\kaishu\sxau@label@name}
     \fancyfoot[LE]{\wuhao ~{\bf\thepage}~}
     \fancyfoot[RO]{\wuhao ~{\bf\thepage}~}
+    % 页眉线
+    \renewcommand{\headrulewidth}{0pt}
+  }
+  \fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[OC]{\centering\xiaowuhao\kaishu\sxau@label@author\sxau@value@author\sxau@label@title\sxau@value@title}
+    \fancyhead[EC]{\centering\xiaowuhao\kaishu\sxau@label@name}
+    \fancyfoot[LE]{\wuhao ~{\bf\thepage}~}
+    \fancyfoot[RO]{\wuhao ~{\bf\thepage}~}
+    \renewcommand{\headrulewidth}{0pt}
   }
 \else
   \fancypagestyle{main}{
