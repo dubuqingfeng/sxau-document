@@ -25,23 +25,62 @@
 \RequirePackage{hyperref}
 \RequirePackage{enumitem}
 \RequirePackage{titlesec}
+\RequirePackage{fontspec}
 
+% 页边距
 \geometry{left=2.5cm, right=2.0cm, top=2.0cm, bottom=2.7cm}
 \setlength{\headheight}{1pt}
 \setlength{\footskip}{0.7cm}
 \setlength{\parindent}{0pt}
 
+% 用于页眉的作者和标题
+\renewcommand\title[2][\sxau@value@title]{%
+  \def\sxau@value@title{#2}
+  \def\sxau@value@titlemark{\MakeUppercase{#1}}}
+\renewcommand\author[1]{\def\sxau@value@author{#1}}
+
+\setcounter{secnumdepth}{4}
+
+\ctexset{contentsname={\sxau@contentsname}}
+
 \titleformat{\chapter}
-{\heiti\centering\fontsize{18pt}{18pt}\selectfont}
+{\heiti\centering\xiaoerhao}
+% 副标题
 {}
 {0pt}
 {}
 
-\fancypagestyle{main}{
-  \fancyhead[L]{\small\kaishu{sxau}}
-  \fancyhead[R]{\nouppercase{\small\kaishu\leftmark}}
-  \fancyfoot[C]{\small ~{\bf\thepage}~}
-  \renewcommand{\headheight}{32pt}
-}
+% fancy的页眉页脚
+\if@twoside
+  \fancypagestyle{main}{
+    \fancyhf{}
+    \fancyhead[OC]{\centering\xiaowuhao\kaishu\sxau@label@author\sxau@value@author\sxau@label@title\sxau@value@title}
+    \fancyhead[EC]{\centering\xiaowuhao\kaishu\sxau@label@name}
+    \fancyfoot[LE]{\wuhao ~{\bf\thepage}~}
+    \fancyfoot[RO]{\wuhao ~{\bf\thepage}~}
+  }
+\else
+  \fancypagestyle{main}{
+    \fancyhf{}
+    \fancyhead[R]{\xiaowuhao\kaishu\sxau@label@author\sxau@value@author\sxau@label@title\sxau@value@title}
+    \fancyhead[L]{\xiaowuhao\kaishu\sxau@label@name}
+    \fancyfoot[C]{\wuhao ~{\bf\thepage}~}
+  }
+\fi
 
 \newcommand{\CJKLaTeX}{CJK--\LaTeX} 
+
+
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{9pt}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+
