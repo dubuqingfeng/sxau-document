@@ -70,7 +70,7 @@
 % Setting Package listings/lstlistings
 \lstset{tabsize=4, %
   frame=shadowbox, %把代码用带有阴影的框圈起来
-  commentstyle=\color{red!50!green!50!blue!50},%浅灰色的注释
+  commentstyle=\heiti\color{red!50!green!50!blue!50},%浅灰色的注释
   rulesepcolor=\color{red!20!green!20!blue!20},%代码块边框为淡青色
   keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色，粗体
   showstringspaces=false,%不显示代码字符串中间的空格标记

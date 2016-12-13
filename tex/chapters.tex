@@ -119,6 +119,7 @@ int main() {
     printf("fork failed\n");
     break;
   case 0:
+    // 测试注释
     /* child calls exec */
     execl("/bin/ls", "ls", "-l", (char*)0);
     printf("execl failed\n");
