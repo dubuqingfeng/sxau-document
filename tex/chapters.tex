@@ -105,6 +105,35 @@
 	\item 针对Windows用户的额外需求：学位论文模本分别使用git和GNUMake进行版本控制和构建，建议从Cygwin安装这两个工具。
 \end{itemize}
 
+\begin{lstlisting}[language={C}, caption={一段C源代码}]
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+int main() {
+  pid_t pid;
+
+  switch ((pid = fork())) {
+  case -1:
+    printf("fork failed\n");
+    break;
+  case 0:
+    /* child calls exec */
+    execl("/bin/ls", "ls", "-l", (char*)0);
+    printf("execl failed\n");
+    break;
+  default:
+    /* parent uses wait to suspend execution until child finishes */
+    wait((int*)0);
+    printf("is completed\n");
+    break;
+  }
+
+  return 0;
+}
+\end{lstlisting}
+
 \subsection{准备工作}
 \label{sec:requirements}
 
@@ -117,10 +146,39 @@
 	\item 针对Windows用户的额外需求：学位论文模本分别使用git和GNUMake进行版本控制和构建，建议从Cygwin安装这两个工具。
 \end{itemize}
 
+\begin{figure}[!htp]
+  \centering
+  \includegraphics[width=0.3\textwidth]{sxau.jpg}
+  \hspace{1cm}
+  \includegraphics[width=0.3\textwidth]{sxau.jpg}
+  \caption{xx\label{xx}}
+%  \bicaption[fig:SRR]{这里将出现在插图索引中}{中文题图}{Fig}{English caption}
+\end{figure}
+
+\begin{figure}[!htp]
+  \centering
+  \includegraphics[width=0.3\textwidth]{sxau.jpg}
+  \caption{xx\label{xx}}
+%  \bicaption[fig:SRR]{这里将出现在插图索引中}{中文题图}{Fig}{English caption}
+\end{figure}
+
+\begin{table}[!hpb]
+  \centering
+  \caption{xx\label{xx}}
+  
+  % \bicaption[tab:firstone]{指向一个表格的表目录索引}{一个颇为标准的三线表格}{Table}{A Table}
+  \begin{tabular}{@{}llr@{}} \toprule
+    类别 & 水溶型 & 胶体分散型 (\$)\\ \midrule
+    状态 & 溶解～胶束 & 分散 \\
+    & 透明 & 半透明 \\
+    重均分子量 & 1000-10000 & 数千－20万 \\ \bottomrule
+  \end{tabular}
+\end{table}
+
 \subsection{准备工作}
 \label{sec:requirements}
 
-要使用这个模板撰写学位论文，需要在\emph{TeX系统}、\emph{中英文字体}、\emph{TeX技能}上有所准备。
+要使用这个模板撰写学位论文\parencite{Meta_CN,JohnD,IEEE-1363}，需要在\emph{TeX系统}、\emph{中英文字体}、\emph{TeX技能}上有所准备。
 
 \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
 	\item 系统：所使用的系统要支持 引擎，且带有ctex 2.x宏包，以2015年的\emph{完整}TeXLive、MacTeX发行版为佳。
@@ -128,3 +186,9 @@
 	\item TeX技能：尽管提供了对模板的必要说明，但这不是一份“ \LaTeX 入门文档”。在使用前请先通读其他入门文档。
 	\item 针对Windows用户的额外需求：学位论文模本分别使用git和GNUMake进行版本控制和构建，建议从Cygwin安装这两个工具。
 \end{itemize}
+
+\begin{references}{99}
+    \item\textsc{Chen H, Chan C~T}. {Acoustic cloaking in three dimensions using acoustic metamaterials}[J]. Applied Physics Letters, 2007, 91:183518.
+    \item\textsc{Chen H, Wu B~I, Zhang B}, et al. {Electromagnetic Wave Interactions with a Metamaterial Cloak}[J]. Physical Review Letters, 2007, 99(6):63903.
+\end{references}
+
